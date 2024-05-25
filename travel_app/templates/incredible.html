@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Incredible India</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body class='bg-slate-500'>
+    <div style="max-width: 800px; margin: 10px auto; padding: 30px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <header style="text-align: center; margin-bottom: 30px;font-size: 2.5em; font-weight: bold;">
+            <h1 style="margin: 0;">LNS EXPLORER</h1>
+        </header>
+        <main style="margin-bottom: 30px;">
+            <h2 style="text-align: center; margin-bottom: 30px; font-size: 2rem; font-weight: bold;">Explore Incredible India!</h2>
+            <p style="text-align: center; font-size: 1.2em; font-weight: bold;">Discover the rich history, diverse culture, and breathtaking landscapes of India. From the iconic Taj Mahal to the vibrant streets of Jaipur, there's something for every traveler to enjoy.</p>
+            <br>
+            <img id="mainImage" src="../static/image.png" alt="India" style="width: 100%; height: 55vh; border-radius: 4px;">
+            <br>
+            <div class="w3-container">
+                <div class="w3-light-grey">
+                  <div id="myBar" class="w3-container w3-blue w3-center" style="width:20%">20%</div>
+                </div>
+                <br>
+                <!-- <button class="w3-button w3-blue" onclick="move()">Explore</button>  -->
+            </div>
+                
+            <div id="destinationList" style="display: none;">
+                <ul style="list-style: none; padding: 0; margin: 30px 0;">
+                    <li style="margin-bottom: 10px;">
+                        <ul style="list-style: none; padding: 0; margin: 0; display: inline-block;">
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Delhi</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Delhi City.jpg" alt="delhi" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Agra</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Agra.jpg" alt="agra" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Panjim</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Panjim.jpg" alt="panjim" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Shimla</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Shimla.jpg" alt="shimla" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Haridwar</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Haridwar.jpg" alt="Haridwar" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Ooty</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Ooty.jpg" alt="Ooty" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Jaipur</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Jaipur.jpg" alt="Jaipur" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Tirupati</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Tirupati.jpg" alt="Tirupati" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Andaman Islands</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Andaman Islands.jpg" alt="Andaman Islands" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Munnar</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Munnar.jpg" alt="Munnar" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Shirdi</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Shirdi.jpg" alt="Shirdi" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Somnath</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Somnath.jpg" alt="Somnath" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Amritsar</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Amritsar.jpg" alt="Amritsar" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Darjeeling</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Darjeeling.jpg" alt="Darjeeling" class="image-to-show" style="width:100vw;">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Pondicherry</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Pondicherry.jpg" alt="Pondicherry" class="image-to-show" style="width: 100vw;">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Mysore</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Mysore.jpg" alt="Mysore" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Puri</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Puri.jpg" alt="Puri" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Hyderabad</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Hyderabad.jpg" alt="Hyderabad" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Khajuraho</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Khajuraho.jpg" alt="Khajuraho" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Kaziranga National Park</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Kaziranga National Park.jpg" alt="Kaziranga National Park" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Gangtok</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Gangtok.jpg" alt="Gangtok" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Cherrapunji</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Cherrapunji.jpg" alt="Cherrapunji" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Chandigarh</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Chandigarh.jpg" alt="Chandigarh" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Srinagar</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Srinagar.jpg" alt="Srinagar" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Leh</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Leh.jpg" alt="Leh" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Itanagar</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Itanagar.jpg" alt="Itanagar" class="image-to-show" style="width: 100vw;">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Diu</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Diu.jpg" alt="Diu" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Lakshadweep Island</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Lakshadweep Island.jpg" alt="Lakshadweep Island" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Thoubal</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Thoubal.jpg" alt="Thoubal" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Lunglei</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Lunglei.jpg" alt="Lunglei" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Mokokchung</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Mokokchung.jpg" alt="Mokokchung" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Nubra Valley</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Nubra Valley.jpg" alt="Nubra Valley" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Agartala</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Agartala.jpg" alt="Agartala" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Dantewada</li>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/Dantewada.jpg" alt="Dantewada" class="image-to-show">
+                            <br>
+                            <li style="margin-right: 10px;font-size: 2rem; font-weight: bold;">Jai Hind</li>
+                            <p style="margin-right: 10px;font-size: 1.5rem; font-weight: bold;">Thank You for Exploring Incredible India there are many more places in India to vist.</p>
+                            <img src="../static/Travel Destinations of India by Rishabh Bafna/India_1.jpg" alt="Dantewada" class="image-to-show">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer style="text-align: center; font-size: 0.8em; color: #000000;">
+            <p style="margin: 0;">&copy; 2024 LNS EXPLORER. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function move() {
+            var elem = document.getElementById("myBar");
+            var width = 0;
+            var id = setInterval(frame, 100); // Increase interval duration for slower progress
+
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    showDestinationList();
+                } else {
+                    width++;
+                    elem.style.width = width + '%';
+                    elem.innerHTML = width + '%';
+                    if (width == 35 || width == 62 || width == 90) { // Add pauses at specific points
+                        clearInterval(id);
+                        setTimeout(() => {
+                            id = setInterval(frame, 100);
+                        }, 1000); // 1 second pause
+                    }
+                }
+            }
+        }
+
+        function showDestinationList() {
+            var destinationList = document.getElementById("destinationList");
+            destinationList.style.display = "block";
+        }
+
+        // Start the progress bar animation when the page loads
+        window.onload = function() {
+            move();
+        };
+    </script>
+</body>
+</html>
