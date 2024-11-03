@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .property-card {
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .property-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Hotel Results</h1>
+        <hr>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        {% for property in properties %}
+            <div class="property-card">
+                <h2>{{ property.name }}</h2>
+                
+                {% if property.image_base64 %}
+                    <img src="data:image/png;base64,{{ property.image_base64 }}" alt="{{ property.name }}" class="property-image">
+                {% else %}
+                    <p>No image available for this property.</p>
+                {% endif %}
+                
+                <p><strong>Description:</strong> {{ property.description|default:"Not available" }}</p>
+                <p><strong>Check-in Time:</strong> {{ property.check_in_time|default:"Not available" }}</p>
+                <p><strong>Check-out Time:</strong> {{ property.check_out_time|default:"Not available" }}</p>
+                <p><strong>Rate per Night:</strong> {{ property.rate_per_night.lowest|default:"Not available" }}</p>
+                
+                <p><strong>Nearby Places:</strong>
+                    {% if property.nearby_places %}
+                        {% for place in property.nearby_places %}
+                            {{ place.name }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        Not available
+                    {% endif %}
+                </p>
+                
+                <p><strong>Overall Rating:</strong> {{ property.overall_rating|default:"Not available" }}</p>
+                <p><strong>Amenities:</strong> {{ property.amenities|join:', '|default:"Not available" }}</p>
+
+                {% if property.link %}
+                    <a href="{{ property.link }}" class="btn btn-primary" target="_blank">Visit Website</a>
+                {% else %}
+                    <p>No website available for this property.</p>
+                {% endif %}
+                
+                <hr>
+            </div>
+        {% empty %}
+            <p>No properties found.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
