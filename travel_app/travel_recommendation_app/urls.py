@@ -11,4 +11,5 @@ urlpatterns = [
     path('recommended_cities.html',views.recommend_cities,name='city_recommended'),
     path('recommended_tags.html',views.recommend_tags,name='tags_recommended'),
     path('recommended_text.html',views.recommendation_view,name='Text_recommended'),
+    path('booking.html',views.booking_form,name='booking_form'),
 ]

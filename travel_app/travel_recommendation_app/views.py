@@ -10,6 +10,14 @@ from django.conf import settings
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import string
+from django.shortcuts import render
+from serpapi import GoogleSearch
+from PIL import Image
+import requests
+from io import BytesIO
+import base64
+import os
+from django.http import HttpResponse
 # Create your views here.
 
 def home(request):
@@ -20,6 +28,9 @@ def incredible(request):
 
 def travel_recommendation(request):
      return render(request,'get-recommendation.html')
+
+def booking_hotels(request):
+    return render(request,'booking.html')
 
 with open('./static/destination_list.pkl','rb') as file:
     data = pickle.load(file)
@@ -191,3 +202,84 @@ def recommendation_view(request):
             recommended_places = image_urls
     
     return render(request, 'recommended_text.html', {'recommended_places': recommended_places})
+
+# def get_base64_image(image_url):
+#     response = requests.get(image_url)
+#     img = Image.open(BytesIO(response.content))
+#     buffered = BytesIO()
+#     img.save(buffered, format="PNG")
+#     img_str = base64.b64encode(buffered.getvalue()).decode()
+#     return img_str
+
+def get_base64_image(url):
+    """Fetch an image from a URL and convert it to a Base64 string."""
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            image = BytesIO(response.content)
+            return base64.b64encode(image.read()).decode('utf-8')
+        else:
+            print(f"Failed to fetch image: {response.status_code}")
+            return None
+    except Exception as e:
+        print(f"Error fetching image: {e}")
+        return None
+
+def booking_form(request):
+    if request.method == "POST":
+        destination = request.POST.get("place")
+        check_in_date = request.POST.get("checkin")
+        check_out_date = request.POST.get("checkout")
+        adults = request.POST.get("adults")
+        price_limit = float(request.POST.get("price"))
+
+        params = {
+            "engine": "google_hotels",
+            "q": destination,
+            "check_in_date": check_in_date,
+            "check_out_date": check_out_date,
+            "adults": adults,
+            "currency": "INR",
+            "api_key": "e435ec9173ecb74ceaceb0ad39ad9b726f98262066e775f483fa799c642acbd1"  # Ensure your API key is set in your environment
+        }
+
+        try:
+            search = GoogleSearch(params)
+            results = search.get_dict()
+            properties = []
+
+            if "properties" in results and results["properties"]:
+                for property in results["properties"]:
+                    try:
+                        rate_per_night = property.get("rate_per_night", {}).get("lowest", "N/A")
+                        if rate_per_night != "N/A":
+                            rate_per_night_value = float(rate_per_night.replace("₹", "").replace(",", ""))
+                            if rate_per_night_value <= price_limit:
+                                # Process images if available
+                                if "images" in property and property["images"]:
+                                    image_url = property["images"][0].get("thumbnail")
+                                    if image_url:
+                                        img_str = get_base64_image(image_url)
+                                        property['image_base64'] = img_str  # Store the base64 string in property
+
+                                # Add website link if available
+                                if "link" in property:
+                                    property['website'] = property["link"]  # Store the website link in property
+                                    # print(property['website'])
+                                properties.append(property)
+
+                    except ValueError as e:
+                        print(f"Error processing rate value: {e}")
+
+                if properties:
+                    # Render hotel results
+                    return render(request, "hotel_results.html", {"properties": properties})
+
+            # If no properties found within price limit
+            return render(request, "hotel_results.html", {"error": "No properties found within the specified price range."})
+
+        except Exception as e:
+            return render(request, "hotel_results.html", {"error": f"An error occurred during the search: {e}"})
+
+    # Render booking form if not a POST request
+    return render(request, "booking.html")
